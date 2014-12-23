@@ -35,6 +35,7 @@ To get started follow the procedure below to begin building an image.
 # packer build moodle-centos-6.5-x86_64.json
 ```
 
+Vagrant boxes will be placed in the 'build' directory. 
 
 ##Configuration
 

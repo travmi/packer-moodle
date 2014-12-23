@@ -8,18 +8,14 @@ echo "vagrant" | passwd --stdin vagrant
 echo "vagrant        ALL=(ALL)       NOPASSWD: ALL" >> /etc/sudoers
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 echo "root" | passwd --stdin vagrant
+
 # Insecure SSH key used for Vagrant
 mkdir /home/vagrant/.ssh
-#cp ${CONFIGDIR}ssh/* /home/vagrant/.ssh/
-#chmod 600 /home/vagrant/.ssh/id_rsa
-#chmod 644 /home/vagrant/.ssh/id_rsa.pub
-#chmod 700 /home/vagrant/.ssh
 cp ${CONFIGDIR}ssh/authorized_keys /home/vagrant/.ssh/authorized_keys
 chmod 644 /home/vagrant/.ssh/authorized_keys
 rm -rf /etc/ssh/sshd_config
 cp ${CONFIGDIR}ssh/sshd_config /etc/ssh/sshd_config
 service sshd restart
-# ---
 
 # Disable SELINUX
 sed -i 's/enforcing/disabled/g' /etc/sysconfig/selinux
@@ -39,14 +35,7 @@ sed -i '/10.0.2.3/d' /etc/resolv.conf
 echo "nameserver 192.168.0.9" >> /etc/resolv.conf
 echo "nameserver 192.168.0.4" >> /etc/resolv.conf
 
-# Repos
-#rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-#rpm -Uvh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
-#rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
-#rpm -Uvh http://www.percona.com/downloads/percona-release/percona-release-0.0-1.x86_64.rpm
-#rpm -Uvh http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/pgdg-centos94-9.4-1.noarch.rpm
-
-# Was having issues with repositories not installing
+# Was having issues with repositories not installing from rpm.
 cp /tmp/configs/repo/*.repo /etc/yum.repos.d/
 cp /tmp/configs/gpg/* /etc/pki/rpm-gpg/
 chmod 644 /etc/pki/rpm-gpg/*
