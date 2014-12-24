@@ -113,6 +113,10 @@ make install
 
 sleep 5
 
+# Cleanup
+rm -rf /root/plv8js-df32150d6364
+rm -rf /root/df32150d63644a81a7a65aaac9af9c2f1886caa8.zip
+
 # Services
 chkconfig mysql on
 chkconfig postgresql-9.4 on

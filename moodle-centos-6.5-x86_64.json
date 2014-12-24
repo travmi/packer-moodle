@@ -38,13 +38,7 @@
     "post-processors": [{
         "output": "build/moodle-centos-6.6-x86_64.box",
         "type": "vagrant"
-    },
-						{
-		"type": "vagrant-cloud",
-		"box_tag": "mtravis/moodle",
-		"access_token": "{{user `cloud_token`}}",
-		"version": "{{user `version`}}"
-	}],
+    }],
     "provisioners": [{
 		"type": "file",
 		"source": "configs",
@@ -57,5 +51,5 @@
             "scripts/vboxguest.sh",
 			"scripts/start.sh"
         ]
-    }]
+	}]
 }
