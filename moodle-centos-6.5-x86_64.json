@@ -1,8 +1,4 @@
 {
-	"variables": {
-		"version": "0.2.0",
-		"cloud_token": "4rKbr9h5k5mhgy_hVhnVjqGynasoucEQhxDpJAMS1E-Syz-CpF3Xrz7CpzKWriyMyfY"
-	},
 	"builders": [{
         "type": "virtualbox-iso",
         "virtualbox_version_file": ".vbox_version",
